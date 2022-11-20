@@ -94,4 +94,24 @@ public class PermisosRolesControlador {
         }
     }
 
+
+    @GetMapping("validar-permiso/rol/{id_rol}")
+    public PermisosRoles getPermiso(@PathVariable String id_rol,
+                                    @RequestBody Permiso infoPermiso){
+        Permiso elPermiso=this.permisoRepositorio
+                .getPermiso(infoPermiso.getUrl(),
+                        infoPermiso.getMetodo());
+        System.out.println("Permiso : " + elPermiso);
+        Rol elRol=this.rolRepositorio.findById(id_rol).get();
+        System.out.println("El rol: "+ elRol);
+        if (elPermiso!=null && elRol!=null){
+            PermisosRoles resultado = this.permisosRolesRepositorio.getPermisoRol(elRol.get_id(),
+                    elPermiso.get_id());
+            System.out.println("El REsultado: " + resultado);
+            return resultado;
+        }else{
+            return null;
+        }
+    }
+
 }

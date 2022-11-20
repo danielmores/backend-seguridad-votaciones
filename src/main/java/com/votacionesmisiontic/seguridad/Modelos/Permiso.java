@@ -1,9 +1,13 @@
 package com.votacionesmisiontic.seguridad.Modelos;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Document
 public class Permiso {
